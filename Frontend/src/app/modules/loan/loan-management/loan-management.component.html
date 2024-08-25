@@ -1,0 +1,25 @@
+<div class="loan-management-container">
+    <h2>Loan Management</h2>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <table *ngIf="loans.length">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Amount</th>
+          <th>Tenure</th>
+          <th>Purpose</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let loan of loans">
+          <td>{{ loan.id }}</td>
+          <td>{{ loan.amount }}</td>
+          <td>{{ loan.tenure }}</td>
+          <td>{{ loan.purpose }}</td>
+          <td>{{ loan.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

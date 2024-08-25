@@ -1,0 +1,7 @@
+<div *ngIf="isVisible" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" (click)="onClose()">X</button>
+      <ng-content></ng-content>
+    </div>
+  </div>
+  

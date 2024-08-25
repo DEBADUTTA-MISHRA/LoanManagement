@@ -1,0 +1,22 @@
+<!-- <div class="loan-status-container">
+    <h2>Loan Status</h2>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <div *ngIf="loanStatus">
+      <p>Status: {{ loanStatus.status }}</p>
+      <p>Amount: {{ loanStatus.amount }}</p>
+      <p>Tenure: {{ loanStatus.tenure }} months</p>
+      <p>Purpose: {{ loanStatus.purpose }}</p>
+    </div>
+  </div>
+   -->
+
+   <div *ngIf="loanStatus">
+    <h2>Loan Status</h2>
+    <p>Loan ID: {{ loanStatus.id }}</p>
+    <p>Status: {{ loanStatus.status }}</p>
+    <!-- Add more details as needed -->
+  </div>
+  <div *ngIf="!loanStatus">
+    <p>Loading loan status...</p>
+  </div>
+  
