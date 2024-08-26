@@ -1,6 +1,6 @@
 const userService = require('../services/userService');
 
-exports.register = async (req, res) => {
+const register = async (req, res) => {
     try {
         const user = await userService.registerUser(req.body);
         res.status(201).json({ message: 'User registered successfully', data: user });
@@ -9,7 +9,7 @@ exports.register = async (req, res) => {
     }
 };
 
-exports.login = async (req, res) => {
+const login = async (req, res) => {
     try {
         const user = await userService.loginUser(req.body);
         res.status(200).json({ message: 'User logged in successfully', data: user });
@@ -18,7 +18,7 @@ exports.login = async (req, res) => {
     }
 };
 
-exports.getUserDetails = async (req, res) => {
+const getUserDetails = async (req, res) => {
     try {
         const user = await userService.getUserById(req.params.userId);
         res.status(200).json({ data: user });
@@ -27,7 +27,7 @@ exports.getUserDetails = async (req, res) => {
     }
 };
 
-exports.updateUserProfile = async (req, res) => {
+const updateUserProfile = async (req, res) => {
     try {
         const user = await userService.updateUserProfile(req.params.userId, req.body);
         res.status(200).json({ message: 'User profile updated successfully', data: user });
@@ -35,3 +35,11 @@ exports.updateUserProfile = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
+
+
+module.exports = {
+    login,
+    register,
+    getUserDetails,
+    updateUserProfile
+}

@@ -1,7 +1,7 @@
 const { check, validationResult } = require('express-validator');
 
-module.exports = {
-    validateUserCreation: [
+
+    const registerValidator = async ()=>{ 
         check('email').isEmail().withMessage('Email is invalid'),
         check('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
         check('name').isString().withMessage('Name is required'),
@@ -12,9 +12,9 @@ module.exports = {
             }
             next();
         }
-    ],
+}
 
-    validateUserLogin: [
+    const loginValidator= async ()=>{
         check('email').isEmail().withMessage('Email is invalid'),
         check('password').not().isEmpty().withMessage('Password is required'),
         (req, res, next) => {
@@ -24,5 +24,15 @@ module.exports = {
             }
             next();
         }
-    ],
-};
+
+        const updateProfileValidator = async ()=>{
+            
+            next();
+        }
+}
+
+    module.exports = {
+        registerValidator,
+        loginValidator,
+        updateProfileValidator
+    };
