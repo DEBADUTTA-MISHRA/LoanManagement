@@ -9,10 +9,12 @@ import { LoanManagementComponent } from './modules/loan/loan-management/loan-man
 import { UserProfileComponent } from './modules/user/user-profile/user-profile.component';
 import { UserListComponent } from './modules/user/user-list/user-list.component';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  {path:'dashboard', component: DashboardComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'loan-application', component: LoanApplicationComponent, canActivate: [AuthGuardService] },
   { path: 'loan-status', component: LoanStatusComponent, canActivate: [AuthGuardService] },

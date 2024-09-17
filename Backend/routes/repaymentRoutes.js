@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const repaymentController = require('../controllers/repaymentController');
 const repaymentValidator = require('../validators/repaymentValidator');
-const authMiddleware = require('../middleware/authMiddleware');
+const authMiddleware = require('../middlewares/authMiddleware');
 
 // Protected Routes
 router.get('/:loanId', authMiddleware.protect, repaymentController.getRepaymentSchedule);

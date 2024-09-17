@@ -7,12 +7,12 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8000/api/v1';
+  private apiUrl = 'http://localhost:5000/api';
 
   constructor(private http: HttpClient) {}
 
   login(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/auth/login`, credentials).pipe(
+    return this.http.post<any>(`${this.apiUrl}/users/login`, credentials).pipe(
       catchError(error => {
         console.error('Login error:', error);
         return of(null); // Handle the error and return null or an appropriate fallback
@@ -50,5 +50,11 @@ export class AuthService {
         return of(null); // Handle the error and return null or an appropriate fallback
       })
     );
+  }
+
+  // Mock implementation to get the user role, in real cases it might come from an API or JWT
+  getUserRole(): string {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user.role || 'user'; // Default to 'user' if no role is set
   }
 }

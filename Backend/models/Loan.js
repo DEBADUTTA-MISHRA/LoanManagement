@@ -1,32 +1,59 @@
 const mongoose = require('mongoose');
 
-const LoanSchema = new mongoose.Schema({
-    user: {
+const loanSchema = new mongoose.Schema({
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'User', // Refers to the User model
         required: true,
     },
-    amount: {
+    loanAmount: {
         type: Number,
-        required: [true, 'Please provide loan amount'],
+        required: true,
     },
     interestRate: {
         type: Number,
-        required: [true, 'Please provide interest rate'],
+        required: true,
     },
-    tenure: {
+    durationInMonths: {
         type: Number,
-        required: [true, 'Please provide loan tenure in months'],
+        required: true,
     },
-    status: {
+    loanStatus: {
         type: String,
-        enum: ['pending', 'approved', 'rejected', 'disbursed', 'closed'],
+        enum: ['pending', 'approved', 'rejected', 'closed'],
         default: 'pending',
     },
+    repaymentSchedule: [{
+        dueDate: {
+            type: Date,
+            required: true,
+        },
+        amountDue: {
+            type: Number,
+            required: true,
+        },
+        amountPaid: {
+            type: Number,
+            default: 0,
+        },
+        status: {
+            type: String,
+            enum: ['pending', 'paid', 'overdue'],
+            default: 'pending',
+        }
+    }],
     createdAt: {
         type: Date,
         default: Date.now,
     },
+    updatedAt: {
+        type: Date,
+        default: Date.now,
+    }
+}, {
+    timestamps: true,
 });
 
-module.exports = mongoose.model('Loan', LoanSchema);
+const Loan = mongoose.model('Loan', loanSchema);
+
+module.exports = Loan;

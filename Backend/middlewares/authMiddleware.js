@@ -1,6 +1,20 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
+// Function to generate JWT token
+const generateToken = (user) => {
+    const payload = {
+        id: user._id,
+        email: user.email,
+        // You can include additional fields here if needed
+    };
+
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+    return token;
+};
+
+// Middleware to protect routes
 const protect = async (req, res, next) => {
     let token;
     if (
@@ -23,15 +37,19 @@ const protect = async (req, res, next) => {
     }
 };
 
-const admin = (req, res, next) => {
-    if (req.user && req.user.role === 'admin') {
-        next();
-    } else {
-        res.status(403).json({ error: 'Not authorized as admin' });
-    }
+// Middleware to restrict access to specific roles
+const restrictTo = (...roles) => {
+    return (req, res, next) => {
+        if (roles.includes(req.user.role)) {
+            next();
+        } else {
+            res.status(403).json({ error: 'Not authorized' });
+        }
+    };
 };
 
 module.exports = {
+    generateToken,
     protect,
-    admin
-}
+    restrictTo,  // Export the restrictTo function
+};

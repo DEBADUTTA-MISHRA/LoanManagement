@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Restore margin/padding for lists */
+ul {
+    padding-left: 20px; /* Adjust this value as needed */
+    list-style-type: disc;
+  }
+  
+  li {
+    margin-bottom: 10px; /* Optional: adds space between list items */
+  }

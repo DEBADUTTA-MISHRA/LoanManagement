@@ -24,7 +24,8 @@ export class LoginComponent {
   onLogin(): void {
     this.authService.login(this.loginData).subscribe(
       (response) => {
-        localStorage.setItem('token', response.token);
+        console.log("response token",response.data.token);
+        localStorage.setItem('token', response.data.token);
         this.router.navigate(['/dashboard']);
         this.notificationService.showSuccess('Login successful!');
       },

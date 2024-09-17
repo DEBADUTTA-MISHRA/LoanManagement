@@ -1,4 +1,21 @@
 <header class="header">
-    <h1>My Application</h1>
-  </header>
-  
+  <div class="left-section">
+    <button class="menu-btn" (click)="toggleSidebar()">
+      <i class="fa fa-bars"></i>
+    </button>
+    <img src="assets/logo.png" alt="Logo" class="logo" />
+  </div>
+
+  <div class="right-section">
+    <div class="user-info" (click)="toggleUserMenu()">
+      <img [src]="userPhotoUrl" alt="User Photo" class="user-photo" />
+      <span class="username">{{ username }}</span>
+    </div>
+
+    <div *ngIf="showUserMenu" class="user-menu">
+      <p>{{ username }}</p>
+      <p>{{ userEmail }}</p>
+      <button (click)="logout()">Logout</button>
+    </div>
+  </div>
+</header>

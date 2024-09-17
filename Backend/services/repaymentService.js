@@ -1,15 +1,11 @@
 const Repayment = require('../models/Repayment');
 const Loan = require('../models/Loan');
 
-exports.getRepaymentSchedule = async (loanId) => {
-    const repayments = await Repayment.find({ loan: loanId });
-    if (!repayments) {
-        throw new Error('Repayment schedule not found');
-    }
-    return repayments;
+const getRepaymentSchedule = async (loanId) => {
+    return Repayment.find({ loan: loanId });
 };
 
-exports.makeRepayment = async (repaymentData) => {
+const makeRepayment = async (repaymentData) => {
     const { repaymentId, amount, paidDate } = repaymentData;
 
     const repayment = await Repayment.findById(repaymentId);
@@ -40,7 +36,12 @@ exports.makeRepayment = async (repaymentData) => {
     return repayment;
 };
 
-exports.getRepaymentHistory = async (loanId) => {
-    const repayments = await Repayment.find({ loan: loanId, status: 'paid' });
-    return repayments;
+const getRepaymentHistory = async (loanId) => {
+    return Repayment.find({ loan: loanId, status: 'paid' });
+};
+
+module.exports = {
+    getRepaymentSchedule,
+    makeRepayment,
+    getRepaymentHistory
 };

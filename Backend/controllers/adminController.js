@@ -1,6 +1,6 @@
 const adminService = require('../services/adminService');
 
-exports.getLoanReport = async (req, res) => {
+const getLoanReport = async (req, res) => {
     try {
         const report = await adminService.generateLoanReport();
         res.status(200).json({ data: report });
@@ -9,7 +9,7 @@ exports.getLoanReport = async (req, res) => {
     }
 };
 
-exports.getRepaymentReport = async (req, res) => {
+const getRepaymentReport = async (req, res) => {
     try {
         const report = await adminService.generateRepaymentReport();
         res.status(200).json({ data: report });
@@ -18,7 +18,7 @@ exports.getRepaymentReport = async (req, res) => {
     }
 };
 
-exports.getCustomerReport = async (req, res) => {
+const getCustomerReport = async (req, res) => {
     try {
         const report = await adminService.generateCustomerReport();
         res.status(200).json({ data: report });
@@ -26,3 +26,10 @@ exports.getCustomerReport = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
+
+
+module.exports ={
+    getLoanReport,
+    getRepaymentReport,
+    getCustomerReport
+}
