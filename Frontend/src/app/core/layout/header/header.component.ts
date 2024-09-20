@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  // For demo purposes, replace these with actual user data from your auth service
+  // Replace with actual user data from your auth service
   username: string = 'John Doe';
   userEmail: string = 'johndoe@example.com';
   userPhotoUrl: string = 'assets/user-photo.jpg';
@@ -18,11 +18,7 @@ export class HeaderComponent {
   toggleSidebar(): void {
     this.sidebarVisible = !this.sidebarVisible;
     const sidebar = document.querySelector('.sidebar') as HTMLElement;
-    if (this.sidebarVisible) {
-      sidebar.style.display = 'block';
-    } else {
-      sidebar.style.display = 'none';
-    }
+    sidebar.style.display = this.sidebarVisible ? 'block' : 'none';
   }
 
   // Toggles the user menu dropdown
@@ -30,9 +26,27 @@ export class HeaderComponent {
     this.showUserMenu = !this.showUserMenu;
   }
 
+  // Opens the notifications panel
+  openNotifications(): void {
+    console.log('Opening notifications...');
+    // Implement notification logic here
+  }
+
+  // Opens the support panel
+  openSupport(): void {
+    console.log('Opening support...');
+    // Implement support logic here
+  }
+
   // Handle the logout action
   logout(): void {
-    // Implement logout logic here (e.g., AuthService.logout(), routing to login page)
     console.log('Logging out...');
+    // Implement logout logic here (e.g., AuthService.logout(), routing to login page)
+  }
+
+  // Handle the update profile action
+  updateProfile(): void {
+    console.log('Redirecting to update profile...');
+    // Implement profile update logic here (e.g., route to the profile update page)
   }
 }

@@ -4,8 +4,75 @@
   <app-sidebar></app-sidebar>
   
   <div class="content">
-    <p>Dashboard...</p>
-    <!-- Dashboard content goes here -->
-    <!-- <router-outlet></router-outlet> -->
+    <h2>Admin Dashboard</h2>
+    <div class="stats">
+      <div class="stat-card">
+        <h3>Total Users</h3>
+        <p>{{ totalUsers }}</p>
+        <button (click)="viewDetails('users')">View Details</button>
+      </div>
+      <div class="stat-card">
+        <h3>Total Approved Loans</h3>
+        <p>{{ totalApprovedLoans }}</p>
+        <button (click)="viewDetails('approvedLoans')">View Details</button>
+      </div>
+      <div class="stat-card">
+        <h3>Total Overdue Loans</h3>
+        <p>{{ totalOverdueLoans }}</p>
+        <button (click)="viewDetails('overdueLoans')">View Details</button>
+      </div>
+      <div class="stat-card">
+        <h3>Total Loan Applications</h3>
+        <p>{{ totalLoanApplications }}</p>
+        <button (click)="viewDetails('loanApplications')">View Details</button>
+      </div>
+      <div class="stat-card">
+        <h3>Total Rejected Loans</h3>
+        <p>{{ totalRejectedLoans }}</p>
+        <button (click)="viewDetails('rejectedLoans')">View Details</button>
+      </div>
+      <div class="stat-card">
+        <h3>Total Loan Amount Disbursed</h3>
+        <p>{{ totalLoanAmountDisbursed }}</p>
+        <button (click)="viewDetails('disbursedLoans')">View Details</button>
+      </div>
+      <div class="stat-card">
+        <h3>Total Repayments Received</h3>
+        <p>{{ totalRepaymentsReceived }}</p>
+        <button (click)="viewDetails('repayments')">View Details</button>
+      </div>
+      <div class="stat-card">
+        <h3>Active Loans</h3>
+        <p>{{ activeLoans }}</p>
+        <button (click)="viewDetails('activeLoans')">View Details</button>
+      </div>
+      <div class="stat-card">
+        <h3>Loan Default Rate</h3>
+        <p>{{ loanDefaultRate }}%</p>
+        <button (click)="viewDetails('defaultRate')">View Details</button>
+      </div>
+      <div class="stat-card">
+        <h3>New Users This Month</h3>
+        <p>{{ newUsersThisMonth }}</p>
+        <button (click)="viewDetails('newUsers')">View Details</button>
+      </div>
+      <div class="stat-card">
+        <h3>New Loan Applications This Month</h3>
+        <p>{{ newLoanApplicationsThisMonth }}</p>
+        <button (click)="viewDetails('newApplications')">View Details</button>
+      </div>
+      <div class="stat-card">
+        <h3>Average Loan Amount</h3>
+        <p>{{ averageLoanAmount }}</p>
+        <button (click)="viewDetails('averageLoan')">View Details</button>
+      </div>
+      <div class="stat-card">
+        <h3>User Engagement</h3>
+        <p>{{ userEngagement }}</p>
+        <button (click)="viewDetails('userEngagement')">View Details</button>
+      </div>
+    </div>
   </div>
 </div>
+
+

@@ -1,12 +1,39 @@
 <aside class="sidebar">
   <ul>
-    <li><a routerLink="/home"><i class="fa fa-home"></i> Home</a></li>
-    <li><a routerLink="/loan-application"><i class="fa fa-file"></i> Apply for Loan</a></li>
-    <li><a routerLink="/loan-status"><i class="fa fa-clock"></i> Loan Status</a></li>
-    <li *ngIf="isAdmin"><a routerLink="/loan-management"><i class="fa fa-cogs"></i> Loan Management</a></li>
-    <li><a routerLink="/user-profile"><i class="fa fa-user"></i> User Profile</a></li>
-    <li *ngIf="isAdmin"><a routerLink="/user-list"><i class="fa fa-users"></i> User List</a></li>
-    <li><a routerLink="/notifications"><i class="fa fa-bell"></i> Notifications</a></li>
-    <li><a routerLink="/logout"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+    <li><a routerLink="/home"><img src="assets/home-icon.png" alt="Home" /> Home</a></li>
+    <li>
+      <a (click)="openLoanForm()"><img src="assets/apply-loan-icon.png" alt="Apply for Loan" /> Apply for Loan</a>
+    </li>
+    <li><a routerLink="/loan-status"><img src="assets/loan-status-icon.png" alt="Loan Status" /> Loan Status</a></li>
+    <li><a routerLink="/repayment-schedule"><img src="assets/repayment-icon.png" alt="Repayment Schedule" /> Repayment Schedule</a></li>
+    <li><a routerLink="/payment-history"><img src="assets/history-icon.png" alt="Payment History" /> Payment History</a></li>
+
+    <li *ngIf="isAdmin"><a routerLink="/loan-management"><img src="assets/loan-management-icon.png" alt="Loan Management" /> Loan Management</a></li>
+    <li *ngIf="isAdmin"><a routerLink="/update-loan-status"><img src="assets/update-status-icon.png" alt="Update Loan Status" /> Update Loan Status</a></li>
+    <li *ngIf="isAdmin"><a routerLink="/loan-reports"><img src="assets/reports-icon.png" alt="Loan Reports" /> Loan Reports</a></li>
+    <li *ngIf="isAdmin"><a routerLink="/user-list"><img src="assets/user-list-icon.png" alt="User List" /> User List</a></li>
   </ul>
 </aside>
+
+<!-- Loan Application Modal -->
+<div *ngIf="showLoanForm" class="loan-form-modal">
+  <div class="loan-form-content">
+    <h2>Apply for a Loan</h2>
+    <form (ngSubmit)="applyForLoan()">
+      <div class="form-group">
+        <label for="loanAmount">Loan Amount</label>
+        <input type="number" id="loanAmount" [(ngModel)]="loanAmount" name="loanAmount" required />
+      </div>
+      <div class="form-group">
+        <label for="interestRate">Interest Rate (%)</label>
+        <input type="number" id="interestRate" [(ngModel)]="interestRate" name="interestRate" required />
+      </div>
+      <div class="form-group">
+        <label for="durationInMonths">Duration (Months)</label>
+        <input type="number" id="durationInMonths" [(ngModel)]="durationInMonths" name="durationInMonths" required />
+      </div>
+      <button type="submit" class="apply-btn">Apply</button>
+      <button type="button" class="close-btn" (click)="closeLoanForm()">Close</button>
+    </form>
+  </div>
+</div>
