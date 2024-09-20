@@ -23,25 +23,25 @@ const loanSchema = new mongoose.Schema({
         enum: ['pending', 'approved', 'rejected', 'closed'],
         default: 'pending',
     },
-    repaymentSchedule: [{
-        dueDate: {
-            type: Date,
-            required: true,
-        },
-        amountDue: {
-            type: Number,
-            required: true,
-        },
-        amountPaid: {
-            type: Number,
-            default: 0,
-        },
-        status: {
-            type: String,
-            enum: ['pending', 'paid', 'overdue'],
-            default: 'pending',
-        }
-    }],
+    // repaymentSchedule: [{
+    //     dueDate: {
+    //         type: Date,
+    //         required: true,
+    //     },
+    //     amountDue: {
+    //         type: Number,
+    //         required: true,
+    //     },
+    //     amountPaid: {
+    //         type: Number,
+    //         default: 0,
+    //     },
+    //     status: {
+    //         type: String,
+    //         enum: ['pending', 'paid', 'overdue'],
+    //         default: 'pending',
+    //     }
+    // }],
     createdAt: {
         type: Date,
         default: Date.now,

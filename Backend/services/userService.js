@@ -10,7 +10,14 @@ const registerUser = async (userData) => {
     }
 
     userData.password = await hashPassword(userData.password);
-    const newUser = new User(userData);
+    const newUser = new User({
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        email: userData.email,
+        password: userData.password,
+        phoneNumber: userData.phoneNumber,
+        role: userData.role || 'borrower',  // Assign role, default is 'borrower'
+    });
     return newUser.save();
 };
 

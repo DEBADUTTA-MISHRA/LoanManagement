@@ -2,7 +2,8 @@ const Repayment = require('../models/Repayment');
 const Loan = require('../models/Loan');
 
 const getRepaymentSchedule = async (loanId) => {
-    return Repayment.find({ loan: loanId });
+    const repaymentDetails =  Repayment.find({ loan: loanId });
+    return repaymentDetails;
 };
 
 const makeRepayment = async (repaymentData) => {
