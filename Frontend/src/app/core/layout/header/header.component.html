@@ -1,36 +1,41 @@
-<header class="header">
-  <div class="left-section">
-    <!-- Menu Button -->
-    <button class="menu-btn" (click)="toggleSidebar()">
-      <img src="assets/menu-icon.png" alt="Menu" class="menu-img" />
-    </button>
-    <!-- Logo -->
-    <img src="assets/logo.png" alt="Logo" class="logo" />
-  </div>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-  <div class="right-section">
-    <!-- Notification Button -->
-    <button class="notification-btn" (click)="openNotifications()">
-      <img src="assets/notification-icon.png" alt="Notifications" class="icon-img" />
-    </button>
-
-    <!-- Support Button -->
-    <button class="support-btn" (click)="openSupport()">
-      <img src="assets/support-icon.png" alt="Support" class="icon-img" />
-    </button>
-
-    <!-- User Info -->
-    <div class="user-info" (click)="toggleUserMenu()">
-      <img [src]="userPhotoUrl" alt="User Photo" class="user-photo" />
-      <span class="username">{{ username }}</span>
+<header class="header container-fluid">
+  <div class="row align-items-center">
+    <div class="col-6 d-flex align-items-center">
+      <!-- Menu Button -->
+      <button class="menu-btn btn" (click)="toggleSidebar()">
+        <img src="../../../../assets/images/menu-icon.png" alt="Menu" class="menu-img" />
+      </button>
+      <!-- Logo -->
+      <img src="assets/logo.png" alt="Logo" class="logo ms-3" />
     </div>
 
-    <!-- User Menu Dropdown -->
-    <div *ngIf="showUserMenu" class="user-menu">
-      <p>{{ username }}</p>
-      <p>{{ userEmail }}</p>
-      <button (click)="updateProfile()">Update Profile</button>
-      <button (click)="logout()">Logout</button>
+    <div class="col-6 d-flex justify-content-end align-items-center">
+      <!-- Notification Button -->
+      <button class="notification-btn btn" (click)="openNotifications()">
+        <img src="../../../../assets/images/notification.png" alt="Notifications" class="icon-img" />
+      </button>
+
+      <!-- Support Button -->
+      <button class="support-btn btn ms-3" (click)="openSupport()">
+        <img src="../../../../assets/images/customer-service.png" alt="Support" class="icon-img" />
+      </button>
+
+      <!-- User Info (hide on small screens) -->
+      <div class="user-info d-none d-md-flex align-items-center ms-3" (click)="toggleUserMenu()">
+        <img [src]="userPhotoUrl" alt="User Photo" class="user-photo" />
+        <span class="username ms-2">{{ username }}</span>
+      </div>
+
+      <!-- User Menu Dropdown -->
+      <div *ngIf="showUserMenu" class="user-menu">
+        <p>{{ username }}</p>
+        <p>{{ userEmail }}</p>
+        <button (click)="updateProfile()">Update Profile</button>
+        <button (click)="logout()">Logout</button>
+      </div>
     </div>
   </div>
 </header>
+

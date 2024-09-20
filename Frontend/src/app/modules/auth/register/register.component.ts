@@ -10,9 +10,11 @@ import { NotificationService } from '../../../services/notification/notification
 })
 export class RegisterComponent {
   registrationData = {
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
-    password: ''
+    password: '',
+    phoneNumber: ''
   };
   errorMessage: string = '';
 

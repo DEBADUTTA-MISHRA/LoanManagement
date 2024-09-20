@@ -1,12 +1,14 @@
-<aside class="sidebar">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<aside class="sidebar d-none d-md-block">
   <ul>
-    <li><a routerLink="/home"><img src="assets/home-icon.png" alt="Home" /> Home</a></li>
+    <li><a routerLink="/home"><img src="../../../../assets/images/home.png" alt="Home" /> Home</a></li>
     <li>
-      <a (click)="openLoanForm()"><img src="assets/apply-loan-icon.png" alt="Apply for Loan" /> Apply for Loan</a>
+      <a (click)="openLoanForm()"><img src="../../../../assets/images/personal.png" alt="Apply for Loan" /> Apply for Loan</a>
     </li>
-    <li><a routerLink="/loan-status"><img src="assets/loan-status-icon.png" alt="Loan Status" /> Loan Status</a></li>
-    <li><a routerLink="/repayment-schedule"><img src="assets/repayment-icon.png" alt="Repayment Schedule" /> Repayment Schedule</a></li>
-    <li><a routerLink="/payment-history"><img src="assets/history-icon.png" alt="Payment History" /> Payment History</a></li>
+    <li><a routerLink="/loan-status"><img src="../../../../assets/images/bank-account.png" alt="Loan Status" /> Loan Status</a></li>
+    <li><a routerLink="/repayment-schedule"><img src="../../../../assets/images/term-loan.png" alt="Repayment Schedule" /> Repayment Schedule</a></li>
+    <li><a routerLink="/payment-history"><img src="../../../../assets/images/search.png" alt="Payment History" /> Payment History</a></li>
 
     <li *ngIf="isAdmin"><a routerLink="/loan-management"><img src="assets/loan-management-icon.png" alt="Loan Management" /> Loan Management</a></li>
     <li *ngIf="isAdmin"><a routerLink="/update-loan-status"><img src="assets/update-status-icon.png" alt="Update Loan Status" /> Update Loan Status</a></li>
@@ -22,18 +24,18 @@
     <form (ngSubmit)="applyForLoan()">
       <div class="form-group">
         <label for="loanAmount">Loan Amount</label>
-        <input type="number" id="loanAmount" [(ngModel)]="loanAmount" name="loanAmount" required />
+        <input type="number" id="loanAmount" [(ngModel)]="loanAmount" name="loanAmount" required class="form-control" />
       </div>
       <div class="form-group">
         <label for="interestRate">Interest Rate (%)</label>
-        <input type="number" id="interestRate" [(ngModel)]="interestRate" name="interestRate" required />
+        <input type="number" id="interestRate" [(ngModel)]="interestRate" name="interestRate" required class="form-control" />
       </div>
       <div class="form-group">
         <label for="durationInMonths">Duration (Months)</label>
-        <input type="number" id="durationInMonths" [(ngModel)]="durationInMonths" name="durationInMonths" required />
+        <input type="number" id="durationInMonths" [(ngModel)]="durationInMonths" name="durationInMonths" required class="form-control" />
       </div>
-      <button type="submit" class="apply-btn">Apply</button>
-      <button type="button" class="close-btn" (click)="closeLoanForm()">Close</button>
+      <button type="submit" class="btn apply-btn w-100">Apply</button>
+      <button type="button" class="btn close-btn w-100 mt-2" (click)="closeLoanForm()">Close</button>
     </form>
   </div>
 </div>

@@ -1,20 +1,30 @@
-<div class="register-container">
-    <h2>Register</h2>
-    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-    <form (ngSubmit)="onRegister()">
-      <div>
-        <label for="name">Name</label>
-        <input type="text" id="name" [(ngModel)]="registrationData.name" name="name" required />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+<div class="register-container container mt-5">
+  <h2 class="text-center">Register</h2>
+  <div *ngIf="errorMessage" class="error-message text-danger">{{ errorMessage }}</div>
+  <form (ngSubmit)="onRegister()">
+      <div class="mb-3">
+          <label for="firstName" class="form-label">First Name</label>
+          <input type="text" id="firstName" [(ngModel)]="registrationData.firstName" name="firstName" class="form-control" required />
       </div>
-      <div>
-        <label for="email">Email</label>
-        <input type="email" id="email" [(ngModel)]="registrationData.email" name="email" required />
+      <div class="mb-3">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input type="text" id="lastName" [(ngModel)]="registrationData.lastName" name="lastName" class="form-control" required />
       </div>
-      <div>
-        <label for="password">Password</label>
-        <input type="password" id="password" [(ngModel)]="registrationData.password" name="password" required />
+      <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" [(ngModel)]="registrationData.email" name="email" class="form-control" required />
       </div>
-      <button type="submit">Register</button>
-    </form>
-  </div>
-  
+      <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" id="password" [(ngModel)]="registrationData.password" name="password" class="form-control" required />
+      </div>
+      <div class="mb-3">
+          <label for="phoneNumber" class="form-label">Phone Number</label>
+          <input type="text" id="phoneNumber" [(ngModel)]="registrationData.phoneNumber" name="phoneNumber" class="form-control" required />
+      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>

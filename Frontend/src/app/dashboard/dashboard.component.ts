@@ -25,6 +25,15 @@ export class DashboardComponent {
   averageLoanAmount = 10000;
   userEngagement = 85; // percentage
 
+  stats = [
+    { title: 'Total Users', value: this.totalUsers, type: 'users' },
+    { title: 'Total Approved Loans', value: this.totalApprovedLoans, type: 'approvedLoans' },
+    { title: 'Total Overdue Loans', value: this.totalOverdueLoans, type: 'overdueLoans' },
+    { title: 'Total Loan Applications', value: this.totalLoanApplications, type: 'loanApplications' },
+    // Add more stat items here as needed
+  ];
+
+
   viewDetails(field: string) {
     // Implement navigation or modal logic based on the field clicked
     console.log(`View details for: ${field}`);

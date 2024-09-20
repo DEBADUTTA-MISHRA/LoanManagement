@@ -8,4 +8,5 @@ router.get('/reports/loans', authMiddleware.protect, authMiddleware.restrictTo('
 router.get('/reports/repayments', authMiddleware.protect, authMiddleware.restrictTo('admin'), adminController.getRepaymentReport);
 router.get('/reports/customers', authMiddleware.protect, authMiddleware.restrictTo('admin'), adminController.getCustomerReport);
 
+
 module.exports = router;

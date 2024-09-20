@@ -1,48 +1,92 @@
 .login-container {
-    max-width: 400px;
-    margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+
+  .left-section {
+    flex: 1; /* Takes up available space */
     padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-  
+
     h2 {
-      text-align: center;
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-align: left;
       margin-bottom: 20px;
     }
-  
+
     .error-message {
       color: red;
       margin-bottom: 10px;
     }
-  
+
     form {
       display: flex;
       flex-direction: column;
-  
+
       div {
         margin-bottom: 15px;
-  
+
         label {
           display: block;
           margin-bottom: 5px;
         }
-  
+
+        .star {
+          color: red;
+          font-weight: bolder;
+        }
+
         input {
-          width: 100%;
-          padding: 8px;
+          width: 100%; /* Full width */
+          max-width: 400px; /* Limit maximum width */
+          padding: 10px; /* Increased padding */
           border: 1px solid #ccc;
-          border-radius: 4px;
+          border-radius: 8px; /* Added border radius */
+          transition: border 0.3s; /* Smooth transition on focus */
+          
+          &:focus {
+            border-color: #007bff; /* Highlight border on focus */
+            outline: none; /* Remove default outline */
+          }
         }
       }
-  
+
       button {
+        width: 100%; /* Full width */
+        max-width: 400px; /* Limit maximum width */
         padding: 10px;
         background-color: #007bff;
         color: white;
         border: none;
-        border-radius: 4px;
+        border-radius: 8px; /* Added border radius */
         cursor: pointer;
+        margin-bottom: 10px; // Space between buttons
+        transition: background-color 0.3s; /* Smooth transition on hover */
+        
+        &:hover {
+          background-color: #0056b3; /* Darker shade on hover */
+        }
       }
     }
   }
-  
+
+  .right-section {
+    flex: 1; /* Takes up available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    img {
+      max-width: 100%; // Responsive image
+      height: auto;
+    }
+  }
+}

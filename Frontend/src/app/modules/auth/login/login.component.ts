@@ -24,7 +24,7 @@ export class LoginComponent {
   onLogin(): void {
     this.authService.login(this.loginData).subscribe(
       (response) => {
-        console.log("response token",response.data.token);
+        console.log("response token", response.data.token);
         localStorage.setItem('token', response.data.token);
         this.router.navigate(['/dashboard']);
         this.notificationService.showSuccess('Login successful!');
@@ -34,5 +34,9 @@ export class LoginComponent {
         this.notificationService.showError('Login failed. Please try again.');
       }
     );
+  }
+
+  navigateToSignUp(): void {
+    this.router.navigate(['/signup']); // Adjust the route as per your setup
   }
 }

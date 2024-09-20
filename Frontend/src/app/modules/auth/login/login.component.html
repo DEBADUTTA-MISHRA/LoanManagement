@@ -1,16 +1,26 @@
 <div class="login-container">
-    <h2>Login</h2>
+  <div class="left-section">
+    <h2>Welcome to the Loan Application</h2>
+    <p>Manage your loans easily with our user-friendly application.</p>
+    
     <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    
     <form (ngSubmit)="onLogin()">
       <div>
-        <label for="email">Email</label>
+        <label for="email">Email<span class="star">*</span></label>
         <input type="email" id="email" [(ngModel)]="loginData.email" name="email" required />
       </div>
       <div>
-        <label for="password">Password</label>
+        <label for="password">Password<span class="star">*</span></label>
         <input type="password" id="password" [(ngModel)]="loginData.password" name="password" required />
       </div>
       <button type="submit">Login</button>
+      <button type="button" (click)="navigateToSignUp()">Sign Up</button>
     </form>
   </div>
-  
+
+  <div class="right-section">
+    <!-- Replace with your actual SVG image -->
+    <img src="assets/your-svg-image.svg" alt="Loan Application Image" />
+  </div>
+</div>
