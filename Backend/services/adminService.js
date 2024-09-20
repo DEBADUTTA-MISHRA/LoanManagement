@@ -2,11 +2,11 @@ const Loan = require('../models/Loan');
 const Repayment = require('../models/Repayment');
 const User = require('../models/User');
 
-exports.generateLoanReport = async () => {
+const generateLoanReport = async () => {
     const totalLoans = await Loan.countDocuments();
-    const approvedLoans = await Loan.countDocuments({ status: 'approved' });
-    const pendingLoans = await Loan.countDocuments({ status: 'pending' });
-    const rejectedLoans = await Loan.countDocuments({ status: 'rejected' });
+    const approvedLoans = await Loan.countDocuments({ loanStatus: 'approved' });
+    const pendingLoans = await Loan.countDocuments({ loanStatus: 'pending' });
+    const rejectedLoans = await Loan.countDocuments({ loanStatus: 'rejected' });
 
     return {
         totalLoans,
@@ -16,7 +16,7 @@ exports.generateLoanReport = async () => {
     };
 };
 
-exports.generateRepaymentReport = async () => {
+const generateRepaymentReport = async () => {
     const totalRepayments = await Repayment.countDocuments();
     const paidRepayments = await Repayment.countDocuments({ status: 'paid' });
     const pendingRepayments = await Repayment.countDocuments({ status: 'pending' });
@@ -30,12 +30,19 @@ exports.generateRepaymentReport = async () => {
     };
 };
 
-exports.generateCustomerReport = async () => {
-    const totalCustomers = await User.countDocuments({ role: 'customer' });
-    const activeLoans = await Loan.countDocuments({ status: 'approved' });
+const generateCustomerReport = async () => {
+    const totalCustomers = await User.countDocuments({ role: 'borrower' });
+    const activeLoans = await Loan.countDocuments({ loanStatus: 'approved' });
 
     return {
         totalCustomers,
         activeLoans,
     };
 };
+
+
+module.exports = {
+    generateLoanReport,
+    generateRepaymentReport,
+    generateCustomerReport
+}
