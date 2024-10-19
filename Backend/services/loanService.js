@@ -3,7 +3,7 @@ const Repayment = require('../models/Repayment');
 
 const applyLoan = async (userId, loanData) => {
     // Check for existing active loan
-    const activeLoan = await Loan.findOne({ userId: userId, loanStatus: 'active' });
+    const activeLoan = await Loan.findOne({ userId: userId, loanStatus: 'approaved' });
 
     if (activeLoan) {
         return null; // Cannot apply if there is an active loan

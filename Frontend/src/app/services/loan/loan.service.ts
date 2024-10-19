@@ -33,14 +33,14 @@ export class LoanService {
  */
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoanService {
-  private apiUrl = 'http://localhost:8000/api/v1';
+  private apiUrl = 'http://localhost:5000/api';
 
   constructor(private http: HttpClient) {}
 
@@ -53,7 +53,13 @@ export class LoanService {
   }
 
   applyLoan(loanData: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/loans/apply`, loanData);
+    const token = localStorage.getItem('token');
+    console.log("token",token);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    console.log("headers",headers);
+    return this.http.post<any>(`${this.apiUrl}/loans/apply`, loanData, { headers });
   }
 
   getLoanStatus(loanId: string): Observable<any> {

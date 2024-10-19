@@ -21,7 +21,7 @@ export class AuthService {
   }
 
   register(userData: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/auth/register`, userData).pipe(
+    return this.http.post<any>(`${this.apiUrl}/users/register`, userData).pipe(
       catchError(error => {
         console.error('Registration error:', error);
         return of(null); // Handle the error and return null or an appropriate fallback
@@ -57,4 +57,9 @@ export class AuthService {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     return user.role || 'user'; // Default to 'user' if no role is set
   }
+
+updateProfile(updateData: any): Observable<any> { 
+  return this.http.put(`${this.apiUrl}/users`, updateData);
+}
+
 }

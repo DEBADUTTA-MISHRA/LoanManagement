@@ -17,14 +17,13 @@ const generateToken = (user) => {
 // Middleware to protect routes
 const protect = async (req, res, next) => {
     let token;
-    if (
-        req.headers.authorization &&
-        req.headers.authorization.startsWith('Bearer')
-    ) {
+    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         token = req.headers.authorization.split(' ')[1];
+        console.log("Received token:", token);  // Log the token here
     }
-
+    
     if (!token) {
+        console.log("Token missing");
         return res.status(401).json({ error: 'Not authorized, no token' });
     }
 
@@ -33,7 +32,8 @@ const protect = async (req, res, next) => {
         req.user = await User.findById(decoded.id).select('-password');
         next();
     } catch (error) {
-        res.status(401).json({ error: 'Not authorized, token failed' });
+        console.log("Token validation failed", error.message); // Log the error
+        return res.status(401).json({ error: 'Not authorized, token failed' });
     }
 };
 

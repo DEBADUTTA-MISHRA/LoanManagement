@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../../services/auth/auth.service';
+import { LoanService } from '../../../services/loan/loan.service';
+import { NotificationService } from '../../../services/notification/notification.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,7 +16,13 @@ export class SidebarComponent {
   interestRate: number = 5;
   durationInMonths: number = 3;
 
-  constructor(private authService: AuthService) { }
+  errorMessage: string = '';
+
+  constructor(
+    private authService: AuthService,
+    private loanService:LoanService,
+    private notificationService: NotificationService
+  ) { }
 
   ngOnInit(): void {
     const userRole = this.authService.getUserRole(); // Example: 'admin', 'user', etc.
@@ -42,7 +50,15 @@ export class SidebarComponent {
     console.log('Applying for loan with data:', loanData);
 
     // Call your loan application API here
-    // Example: this.loanService.applyForLoan(loanData).subscribe(response => { ... });
+    this.loanService.applyLoan(loanData).subscribe(
+      () => {
+        this.notificationService.showSuccess('Loan application submitted successfully!');
+      },
+      (error) => {
+        this.errorMessage = 'Failed to apply for loan';
+        this.notificationService.showError('Loan application failed. Please try again.');
+      }
+    );
 
     // Close the form after submission
     this.closeLoanForm();

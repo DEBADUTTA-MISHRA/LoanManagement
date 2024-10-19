@@ -7,6 +7,14 @@
   width: 250px; /* Adjust this value to your preferred sidebar width */
 }
 
+.sidebar-visible {
+  transform: translateX(0); /* Show when sidebarVisible is true */
+}
+
+.content-shifted {
+  margin-left: 250px; /* Shift content to the right when sidebar is open */
+}
+
 /* Stats card layout */
 .stat-card {
   background-color: #fff;

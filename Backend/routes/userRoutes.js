@@ -9,7 +9,7 @@ router.post('/login', userValidator.loginValidator, userController.login);
 
 // Protected Routes
 router.get('/:userId', authMiddleware.protect, userController.getUserDetails);
-router.put('/:userId', authMiddleware.protect, userValidator.updateProfileValidator, userController.updateUserProfile);
+router.put('/', authMiddleware.protect, userValidator.updateProfileValidator, userController.updateUserProfile);
 
 // Admin Routes (e.g., for viewing or deleting users)
 router.delete('/:userId', authMiddleware.protect, authMiddleware.restrictTo('admin'), userController.deleteUser);

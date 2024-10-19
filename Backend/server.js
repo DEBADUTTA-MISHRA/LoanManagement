@@ -2,11 +2,18 @@ const express = require('express');
 require('dotenv').config();
 const morgan = require('morgan');
 const connectDB = require('./database/connection');
+const cors = require('cors');
 
 connectDB();
 
 const app = express();
 app.use(express.json());
+// Enable CORS
+app.use(cors({
+    origin: 'http://localhost:4200', // Allow requests from Angular app
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // Allowed headers
+  }));
 
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
