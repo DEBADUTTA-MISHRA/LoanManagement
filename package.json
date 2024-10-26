@@ -1,0 +1,10 @@
+{
+  "name": "LoanManagementSystem",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm run start --prefix Backend\" \"npm run start --prefix Frontend\""
+  },
+  "dependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
